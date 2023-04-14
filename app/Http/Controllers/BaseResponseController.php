@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 
 class BaseResponseController extends Controller
 {
-    public function sendResponse($report_name){
-        $data = Query::where('report_name','=',$report_name)->first();
+    public function sendResponse($data,$message){
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Sukses'
+            'message' => $message,
         ];
 
         return json_encode($response);
