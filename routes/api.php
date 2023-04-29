@@ -3,6 +3,7 @@
 use App\Http\Controllers\BaseAPIController;
 use App\Http\Controllers\BaseResponseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*

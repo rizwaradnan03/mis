@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 return [
@@ -81,14 +82,20 @@ return [
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST_2', '10.8.0.16'),
+            'port' => env('DB_PORT_2', '1433'),
+            'database' => env('DB_DATABASE_2', 'dots_cds_tenants'),
+            'username' => env('DB_USERNAME_2', 'sa'),
+            'password' => env('DB_PASSWORD_2', 'Kreasinusantara123!'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
+            'options' => extension_loaded('sqlsrv') ? array_filter([
+                "Database" => env('DB_DATABASE_2'),
+                "UID" => env('DB_USERNAME_2'),
+                "PWD" => env('DB_PASSWORD_2'),
+                "CharacterSet" => "UTF-8",
+            ]) : null,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
