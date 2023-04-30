@@ -9,7 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class BaseAPIController extends BaseResponseController
 {
-    public function getResponse(Request $request){
+
+    public function getDropdown(){
+        $search_data = DB::connection('sqlsrv')->select("select name, public_id from tenants order by id asc");
+        
+        if(empty($search_data)){
+            return $this->sendResponse($search_data, null);
+        }
+        return $this->sendResponse($search_data, "Data Ditemukan!");
+    }
+
+    public function getOne(Request $request){
         $public_id = $request->header('public_id');
         $search_data = DB::connection('sqlsrv')->selectOne("select * from tenants where public_id = $public_id");
 

@@ -28,4 +28,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/getOne', [BaseAPIController::class, 'getResponse']);
+Route::get('/getDropdown', [BaseAPIController::class, 'getDropdown']);
+Route::get('/getOne', [BaseAPIController::class, 'getOne']);
