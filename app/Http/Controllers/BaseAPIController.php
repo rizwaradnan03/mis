@@ -43,6 +43,7 @@ class BaseAPIController extends BaseResponseController
                 ]) : null,
             ]]);
             $query = DB::connection('mysql')->select("select * from queries");
+            $response_data['nama_ksp'] = $search_data->name;
             foreach($query as $q){
                 $response_data[$q->report_name] = DB::connection($connection)->select($q->query);
             }
