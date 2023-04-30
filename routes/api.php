@@ -17,7 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// try {
+//     DB::connection('sqlsrv')->getPdo();
+//     return 'Connection successful!';
+// } catch (\Exception $e) {
+//     return 'Connection failed: ' . $e->getMessage();
+// }
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get('/getOne', [BaseAPIController::class, 'getResponse']);
