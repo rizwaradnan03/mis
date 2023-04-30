@@ -11,7 +11,7 @@ class BaseAPIController extends BaseResponseController
 {
 
     public function getDropdown(){
-        $search_data = DB::connection('sqlsrv')->select("select name, public_id from tenants order by id asc");
+        $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants order by id asc");
         
         if(empty($search_data)){
             return $this->sendResponse($search_data, null);
@@ -52,9 +52,9 @@ class BaseAPIController extends BaseResponseController
                     "CharacterSet" => "UTF-8",
                 ]) : null,
             ]]);
-            $query = DB::connection('mysql')->select("select * from queries");
+            $query_ksp = DB::connection('mysql')->select("select * from queries");
             $response_data['nama_ksp'] = $search_data->name;
-            foreach($query as $q){
+            foreach($query_ksp as $q){
                 $response_data[$q->report_name] = DB::connection($connection)->select($q->query);
             }
         }
