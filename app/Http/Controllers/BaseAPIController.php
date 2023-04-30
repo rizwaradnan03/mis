@@ -48,6 +48,6 @@ class BaseAPIController extends BaseResponseController
                 $response_data[$q->report_name] = DB::connection($connection)->select($q->query);
             }
         }
-        return json_encode($response_data);
+        return $this->sendResponse($response_data,"Data Ditemukan!");
     }
 }
