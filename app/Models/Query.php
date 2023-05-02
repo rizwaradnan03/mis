@@ -9,7 +9,7 @@ class Query extends Model
 {
     protected $table = 'queries';
     protected $fillable = [
-        'report_name','query','flag'
+        'report_name','report_name_display','query','flag'
     ];
     use HasFactory;
 }
