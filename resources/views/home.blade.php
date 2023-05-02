@@ -101,9 +101,14 @@ input[type="number"] {
         </div>           
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-xl-6 col-6">
             <figure class="highcharts-figure">
                 <div id="chart1"></div>
+            </figure>
+        </div>
+        <div class="col-6">
+            <figure class="highcharts-figure">
+                <div id="chart2"></div>
             </figure>
         </div>
     </div>
@@ -132,39 +137,75 @@ input[type="number"] {
                 $('#judul').html(judul);
 
                 Highcharts.chart('chart1', {
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
-                },
-                title: {
-                    text: "Total Pinjaman",
-                    align: 'left'
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.y}</b>'
-                },
-                accessibility: {
-                    point: {
-                    valueSuffix: '%'
-                    }
-                },
-                plotOptions: {
-                    pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f}%'
-                    }
-                    }
-                },
-                series: [{
-                    name: 'Amount',
-                    colorByPoint: true,
-                    data: data.data.total_pinjaman
-                }]
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: "Total Pinjaman",
+                        align: 'center'
+                    },
+                    tooltip: {
+                        pointFormat: 'NoA: <b>{point.noa}</b> <br>{series.name}: <b>{point.y}</b>'
+                    },
+                    accessibility: {
+                        point: {
+                        valueSuffix: '%'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Saldo',
+                        colorByPoint: true,
+                        data: data.data.total_pinjaman
+                    }]
+                });
+
+                Highcharts.chart('chart2', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: "Total Simpanan",
+                        align: 'center'
+                    },
+                    tooltip: {
+                        pointFormat: 'NoA: <b>{point.noa}</b> <br>{series.name}: <b>{point.y}</b>'
+                    },
+                    accessibility: {
+                        point: {
+                        valueSuffix: '%'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Saldo',
+                        colorByPoint: true,
+                        data: data.data.total_simpanan
+                    }]
                 });
             })
         })

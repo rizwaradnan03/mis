@@ -24,13 +24,13 @@ return new class extends Migration
             [
                 "report_name" => "total_pinjaman",
                 "report_name_display" => "Total Pinjaman",
-                "query" => "select kolektibilitas, count(*) noa, sum(bakidebet) amount from crdmaster where stsrekcrd = 1 and stsbar = 1 and oto = 1 group by kolektibilitas",
+                "query" => "select kolektibilitas, count(*) noa, sum(bakidebet) amount from crdmaster where stsrekcrd = 1 and stsbar = 1 and oto = 1 group by kolektibilitas order by kolektibilitas asc",
                 "flag" => "0"
             ],
             [
                 "report_name" => "total_simpanan",
                 "report_name_display" => "Total Simpanan",
-                "query" => "select count(*) noa, sum(saldoakhir+saldo_iptw) amount from tabmaster where stsrektab in (1,2) and stsbar = 1 and oto = 1",
+                "query" => "select kodeproduktab, count(*) noa, sum(saldoakhir+saldo_iptw) amount from tabmaster where stsrektab in (1,2) and stsbar = 1 and oto = 1 group by kodeproduktab order by kodeproduktab asc",
                 "flag" => "0"
             ],
             [
