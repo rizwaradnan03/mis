@@ -51,6 +51,20 @@ class MisController extends BaseResponseController
         return $produktab;
     }
 
+    public function parseDeposito($dep){
+
+        if($dep == 01){
+            $produkdep = "SIMP. BERJANGKA 1 BULAN";
+        }else if($dep == 03){
+            $produkdep = "SIMP. BERJANGKA 3 BULAN";
+        }else if($dep == 06){
+            $produkdep = "SIMP. BERJANGKA 6 BULAN";
+        }else if($dep == 12){
+            $produkdep = "SIMP. BERJANGKA 12 BULAN";
+        }
+        return $produkdep;
+    }
+
     public function getKSP(Request $request){
         $public_id = $request->input('public_id');
         $search_data = DB::connection('sqlsrv')->selectOne("select * from tenants where public_id = $public_id");
@@ -106,6 +120,24 @@ class MisController extends BaseResponseController
                     'y' => floatval($ts->amount),
                 ];
             }
+
+            // Chart Simpanan Berjangka
+            $getDataDeposito = DB::connection($connection)->select($query_ksp[2]->query);
+            foreach($getDataDeposito as $sb){
+                $response_data['total_simpanan_berjangka'][] = [
+                    'name' => $this->parseDeposito($sb->kodeproduk),
+                    'noa' => $sb->noa,
+                    'y' => floatval($sb->amount),
+                ];
+            }
+
+            // Chart NPL
+            $getDataNPL = DB::connection($connection)->selectOne($query_ksp[3]->query);
+            $response_data['npl'] = [
+                'name' => 'npl',
+                'percentage' => $getDataNPL->pctg,
+                'y' => floatval($getDataNPL->amount),
+            ];
 
             for($i = 4;$i < sizeof($query_ksp);$i++){
                 $response_data[$query_ksp[$i]->report_name] = DB::connection($connection)->selectOne($query_ksp[$i]->query);
