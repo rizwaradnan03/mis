@@ -1,11 +1,11 @@
-@extends('layouts.layout')
+@extends('layouts.app-admin')
 @section('style')
     <style>
 
     </style>
 @endsection
 @section('content')
-    <div id="judul" class="mt-3"></div>
+    <div id="judul"></div>
     <select class="form-control" id="select2" style="width: 100%;">
         <option value="#" disabled selected>--Pilih KSP--</option>
         @foreach ($search_data as $s)

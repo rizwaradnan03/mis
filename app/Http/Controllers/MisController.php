@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 class MisController extends BaseResponseController
 {
-    public function index(){
-        $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants order by id asc");
-        $title = 'Homepage';
-        if(empty($search_data)){
-            return $this->sendResponse($search_data, null);
+    public function ksp(){
+        if(Auth::check()){
+            $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants order by id asc");
+            $title = 'KSP';
+            if(empty($search_data)){
+                return $this->sendResponse($search_data, null);
+            }
+            return view('auth.ksp', compact('search_data','title'));
+        }else{
+            return redirect('/');
         }
-        return view('home', compact('search_data','title'));
     }
 
     public function parseKredit($kol){

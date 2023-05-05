@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MisController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MisController::class, 'index']);
-Route::post('/getKSP', [MisController::class, 'getKSP']);
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::controller(['Auth'])->group(function () {
+    Route::get('/ksp', [MisController::class, 'ksp']);
+    Route::post('/getKSP', [MisController::class, 'getKSP']);
+})->middleware('Auth');
