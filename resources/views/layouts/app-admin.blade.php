@@ -119,7 +119,7 @@
                                             </a>
                                         </li>
                                         <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/apps/inbox.html" class="menu-link">
+                                            <a href="{{url('/bpr')}}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -303,9 +303,6 @@
                 </a>
             </div>
         </div>
-        <a href="#" class="symbol symbol-70 flex-shrink-0">
-            <img src="{{asset('assets/media/stock-600x400/img-1.jpg')}}" title="" alt="" />
-        </a>
     </div>
     <!--end::Item-->
     <!--begin::Separator-->
@@ -328,9 +325,7 @@
                 </a>
             </div>
         </div>
-        <a href="#" class="symbol symbol-70 flex-shrink-0">
-            <img src="assets/media/stock-600x400/img-2.jpg" title="" alt="" />
-        </a>
+
     </div>
     <!--end::Item-->
     <!--begin::Separator-->
@@ -353,9 +348,7 @@
                 </a>
             </div>
         </div>
-        <a href="#" class="symbol symbol-70 flex-shrink-0">
-            <img src="assets/media/stock-600x400/img-3.jpg" title="" alt="" />
-        </a>
+
     </div>
     <!--end::Item-->
     <!--begin::Separator-->
@@ -378,9 +371,6 @@
                 </a>
             </div>
         </div>
-        <a href="#" class="symbol symbol-70 flex-shrink-0">
-            <img src="assets/media/stock-600x400/img-4.jpg" title="" alt="" />
-        </a>
     </div>
     <!--end::Item-->
     <!--begin::Separator-->
@@ -403,9 +393,6 @@
                 </a>
             </div>
         </div>
-        <a href="#" class="symbol symbol-70 flex-shrink-0">
-            <img src="assets/media/stock-600x400/img-8.jpg" title="" alt="" />
-        </a>
     </div>
     <!--end::Item-->
 </div>
@@ -1077,9 +1064,6 @@
                     <!--begin::Message In-->
                     <div class="d-flex flex-column mb-5 align-items-start">
                         <div class="d-flex align-items-center">
-                            <div class="symbol symbol-circle symbol-40 mr-3">
-                                <img alt="Pic" src="assets/media/users/300_12.jpg" />
-                            </div>
                             <div>
                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">Matt Pears</a>
                                 <span class="text-muted font-size-sm">2 Hours</span>
@@ -1133,9 +1117,6 @@
                     <!--begin::Message In-->
                     <div class="d-flex flex-column mb-5 align-items-start">
                         <div class="d-flex align-items-center">
-                            <div class="symbol symbol-circle symbol-40 mr-3">
-                                <img alt="Pic" src="assets/media/users/300_12.jpg" />
-                            </div>
                             <div>
                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">Matt Pears</a>
                                 <span class="text-muted font-size-sm">40 seconds</span>
@@ -1162,9 +1143,6 @@
                     <!--begin::Message In-->
                     <div class="d-flex flex-column mb-5 align-items-start">
                         <div class="d-flex align-items-center">
-                            <div class="symbol symbol-circle symbol-40 mr-3">
-                                <img alt="Pic" src="assets/media/users/300_12.jpg" />
-                            </div>
                             <div>
                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">Matt Pears</a>
                                 <span class="text-muted font-size-sm">40 seconds</span>
