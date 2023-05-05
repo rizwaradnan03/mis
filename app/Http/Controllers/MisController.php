@@ -134,14 +134,14 @@ class MisController extends BaseResponseController
             // Chart NPL
             $getDataNPL = DB::connection($connection)->selectOne($query_ksp[3]->query);
             $response_data['npl'] = [
-                'name' => 'npl',
-                'percentage' => $getDataNPL->pctg,
+                'name' => 'NPL',
+                'percentage' => intval($getDataNPL->pctg),
                 'y' => floatval($getDataNPL->amount),
             ];
 
             for($i = 4;$i < sizeof($query_ksp);$i++){
                 $response_data[$query_ksp[$i]->report_name] = DB::connection($connection)->selectOne($query_ksp[$i]->query);
-            }            
+            }
         }
         return $this->sendResponse($response_data,"Data Ditemukan!");
     }
