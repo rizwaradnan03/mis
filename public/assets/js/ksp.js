@@ -108,7 +108,7 @@ $('#select2').on("change", function(){
                 type: 'pie'
             },
             title: {
-                text: "Total Simpanan Berjangka <br><br>" + "Total : " + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan_berjangka),
+                text: "Total Simpanan Berjangka <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan_berjangka),
                 align: 'center'
             },
             tooltip: {
