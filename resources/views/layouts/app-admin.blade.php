@@ -140,37 +140,31 @@
                 <div id="kt_header" class="header header-fixed">
                     <!--begin::Container-->
                     <div class="container-fluid d-flex align-items-stretch justify-content-between">
-                        <!--begin::Header Menu Wrapper-->
-                        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
-                            <!--begin::Header Menu-->
-                            <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
-                                <!--begin::Header Nav-->
-                                <ul class="menu-nav">
-                                    <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active" data-menu-toggle="click" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
-                                            <span class="menu-text">Home</span>
-                                            <i class="menu-arrow"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!--end::Header Nav-->
-                            </div>
-                            <!--end::Header Menu-->
-                        </div>
-                        <!--end::Header Menu Wrapper-->
                         <!--begin::Topbar-->
                         <div class="topbar">
                             <!--end::Languages-->
                             <!--begin::User-->
-                            <div class="topbar-item">
-                                <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-                                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hai,</span>
-                                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Admin</span>
-                                    <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
-                                        <span class="symbol-label font-size-h5 font-weight-bold">S</span>
-                                    </span>
+                            <div class="topbar-item ml-auto">
+                                <div class="dropdown">
+                                    <button class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hai,</span>
+                                        <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Admin</span>
+                                        <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
+                                            <span class="symbol-label font-size-h5 font-weight-bold">S</span>
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{url('/changePass')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                                          </svg> Ganti Password</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{url('/logout')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                                          </svg> Logout</a>
+                                    </div>
                                 </div>
                             </div>
+
                             <!--end::User-->
                         </div>
                         <!--end::Topbar-->
@@ -186,7 +180,7 @@
                 </div>
     <!--end::Content-->
     <!--begin::Footer-->
-    <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+    <div class="footer bg-white py-4 d-flex flex-lg-column" style="position: fixed; bottom: 0; width: 100%;" id="kt_footer">
         <!--begin::Container-->
         <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
             <!--begin::Copyright-->
@@ -1222,6 +1216,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @yield('script')
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
