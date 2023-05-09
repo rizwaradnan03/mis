@@ -14,7 +14,7 @@
     </select>
     <input type="hidden" id="csrf_token" name="csrf_token" value="{{csrf_token()}}">
 
-    <div class="row mt-3 mb-3">
+    <div class="row mt-3 mb-5">
         <div class="col-12 mb-3">
             <div class="card">
                 <label class="form-label text-center fw-bold">Total Aset</label>
@@ -53,31 +53,23 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-right">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12" data-aos="fade-right">
             <figure class="highcharts-figure">
                 <div id="chart1"></div>
             </figure>
         </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-left">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12" data-aos="fade-left">
             <figure class="highcharts-figure">
                 <div id="chart2"></div>
             </figure>
         </div>
-    </div>
-    <div id="hr"></div>
-    <div class="row mb-3">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-right">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12" data-aos="fade-right">
             <figure class="highcharts-figure">
                 <div id="chart3"></div>
-            </figure>
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 fade-left">
-            <figure class="highcharts-figure">
-                <div id="chart4"></div>
             </figure>
         </div>
     </div>
 @endsection
 @section('script')
-<script src="{{asset('assets/js/home.js')}}"></script>
+<script src="{{asset('assets/js/ksp.js')}}"></script>
 @endsection

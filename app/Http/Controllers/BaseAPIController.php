@@ -104,6 +104,7 @@ class BaseAPIController extends BaseResponseController
             $response_data['nama_ksp'] = $search_data->name;
 
             //Chart Pinjaman
+            $sum_pinjaman = 0;
             $getDataPinjaman = DB::connection($connection)->select($query_ksp[0]->query);
             foreach($getDataPinjaman as $tp){
                 $response_data['total_pinjaman'][] = [
@@ -112,8 +113,13 @@ class BaseAPIController extends BaseResponseController
                     'y' => floatval($tp->amount),
                 ];
             }
+            foreach($response_data['total_pinjaman'] as $elemen){
+                $sum_pinjaman += $elemen['y'];
+            }
+            $response_data['sum_total_pinjaman'] = $sum_pinjaman;
 
             // Chart Simpanan
+            $sum_simpanan = 0;
             $getDataSimpanan = DB::connection($connection)->select($query_ksp[1]->query);
             foreach($getDataSimpanan as $ts){
                 $response_data['total_simpanan'][] = [
@@ -122,8 +128,13 @@ class BaseAPIController extends BaseResponseController
                     'y' => floatval($ts->amount),
                 ];
             }
+            foreach($response_data['total_simpanan'] as $elemen){
+                $sum_simpanan += $elemen['y'];
+            }
+            $response_data['sum_total_simpanan'] = $sum_simpanan;
 
             // Chart Simpanan Berjangka
+            $sum_simpanan_berjangka = 0;
             $getDataDeposito = DB::connection($connection)->select($query_ksp[2]->query);
             foreach($getDataDeposito as $sb){
                 $response_data['total_simpanan_berjangka'][] = [
@@ -132,12 +143,16 @@ class BaseAPIController extends BaseResponseController
                     'y' => floatval($sb->amount),
                 ];
             }
+            foreach($response_data['total_simpanan_berjangka'] as $elemen){
+                $sum_simpanan_berjangka += $elemen['y'];
+            }
+            $response_data['sum_total_simpanan_berjangka'] = $sum_simpanan_berjangka;
 
             // Chart NPL
             $getDataNPL = DB::connection($connection)->selectOne($query_ksp[3]->query);
             $response_data['npl'] = [
                 'name' => 'NPL',
-                'percentage' => intval($getDataNPL->pctg),
+                'percentage' => $getDataNPL->pctg,
                 'y' => floatval($getDataNPL->amount),
             ];
 
