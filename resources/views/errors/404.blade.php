@@ -96,10 +96,10 @@ svg {
 </svg>
 <div class="message-box">
   <h1>404</h1>
-  <p>Page not found</p>
+  <p>Sedang Dalam Proses Pengembangan!</p>
   <div class="buttons-con">
     <div class="action-link-wrap">
-      <a onclick="history.back(-1)" class="link-button link-back-button">Go Back</a>
+      <a onclick="history.back(-1)" class="link-button link-back-button">Kembali</a>
     </div>
   </div>
 </div>
