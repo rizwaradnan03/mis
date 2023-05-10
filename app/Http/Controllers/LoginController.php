@@ -22,7 +22,10 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect('/ksp');
+        }else{
+            return back()->with('gagal', 'Email / Password tidak Valid!');
         }
+
         return redirect('/');
     }
 

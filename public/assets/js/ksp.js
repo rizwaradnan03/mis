@@ -25,7 +25,7 @@ $('#select2').on("change", function(){
 
 
         let judul = "";
-            judul += "<h2 class='text-center'>"+data.data.nama_ksp+"<h2>";
+            judul += "<h1 class='text-center fw-bold'>"+data.data.nama_ksp+"<h1>";
         $('#judul').html(judul);
 
         Highcharts.chart('chart1', {
@@ -36,8 +36,11 @@ $('#select2').on("change", function(){
                 type: 'pie'
             },
             title: {
-                text: "Total Pinjaman <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_pinjaman) + "<br>" + "NPL : " + data.data.npl.percentage,
-                align: 'center'
+                text: "Total Pinjaman <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_pinjaman) + "<br>" + "NPL : " + Number(data.data.npl.percentage.toFixed(2)),
+                align: 'center',
+                style: {
+                    fontSize: '20px'
+                }
             },
             tooltip: {
                 pointFormat: 'NoA: <b>{point.noa}</b> <br>{series.name}: <b>{point.y}</b>'
@@ -73,7 +76,10 @@ $('#select2').on("change", function(){
             },
             title: {
                 text: "Total Simpanan <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan),
-                align: 'center'
+                align: 'center',
+                style: {
+                    fontSize: '20px'
+                }
             },
             tooltip: {
                 pointFormat: 'NoA: <b>{point.noa}</b> <br>{series.name}: <b>{point.y}</b>'
@@ -109,7 +115,10 @@ $('#select2').on("change", function(){
             },
             title: {
                 text: "Total Simpanan Berjangka <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan_berjangka),
-                align: 'center'
+                align: 'center',
+                style: {
+                    fontSize: '20px'
+                }
             },
             tooltip: {
                 pointFormat: 'NoA: <b>{point.noa}</b> <br>{series.name}: <b>{point.y}</b>'

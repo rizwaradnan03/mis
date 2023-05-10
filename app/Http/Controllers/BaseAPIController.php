@@ -29,6 +29,8 @@ class BaseAPIController extends BaseResponseController
             $kolektibilitas = "Diragukan";
         }else if($kol == 4){
             $kolektibilitas = "Macet";
+        }else{
+            $kolektibilitas = "-";
         }
         return $kolektibilitas;
     }
@@ -36,19 +38,21 @@ class BaseAPIController extends BaseResponseController
     public function parseSimpanan($tab){
 
         if($tab == 00){
-            $produktab = "SIMP 00";
+            $produktab = "00";
         }else if($tab == 01){
-            $produktab = "SIMP.DEBITUR";
+            $produktab = "DEBITUR";
         }else if($tab == 02){
-            $produktab = "SIMP.UMUM";
+            $produktab = "UMUM";
         }else if($tab == 03){
-            $produktab = "SIMP.TERKAIT";
+            $produktab = "TERKAIT";
         }else if($tab == 04){
-            $produktab = "SIMP.KARYAWAN";
+            $produktab = "KARYAWAN";
         }else if($tab == 06){
-            $produktab = "SIMP 06";
+            $produktab = "06";
         }else if($tab == 07){
-            $produktab = "SIMP 07";
+            $produktab = "07";
+        }else{
+            $produktab = "-";
         }
         return $produktab;
     }
@@ -56,13 +60,15 @@ class BaseAPIController extends BaseResponseController
     public function parseDeposito($dep){
 
         if($dep == 01){
-            $produkdep = "SIMP. BERJANGKA 1 BULAN";
+            $produkdep = "1 BULAN";
         }else if($dep == 03){
-            $produkdep = "SIMP. BERJANGKA 3 BULAN";
+            $produkdep = "3 BULAN";
         }else if($dep == 06){
-            $produkdep = "SIMP. BERJANGKA 6 BULAN";
+            $produkdep = "6 BULAN";
         }else if($dep == 12){
-            $produkdep = "SIMP. BERJANGKA 12 BULAN";
+            $produkdep = "12 BULAN";
+        }else{
+            $produkdep = "-";
         }
         return $produkdep;
     }
@@ -152,7 +158,7 @@ class BaseAPIController extends BaseResponseController
             $getDataNPL = DB::connection($connection)->selectOne($query_ksp[3]->query);
             $response_data['npl'] = [
                 'name' => 'NPL',
-                'percentage' => $getDataNPL->pctg,
+                'percentage' => floatval($getDataNPL->pctg),
                 'y' => floatval($getDataNPL->amount),
             ];
 
