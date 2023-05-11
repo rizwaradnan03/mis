@@ -5,12 +5,42 @@
     }
 });
 
+function terbilang(angka) {
+    var huruf = ["", "SATU", "DUA", "TIGA", "EMPAT", "LIMA", "ENAM", "TUJUH", "DELAPAN", "SEMBILAN", "SEPULUH", "SEBELAS"];
+    var hasil = "";
+
+    if (angka < 12) {
+        hasil = huruf[angka];
+    } else if (angka < 20) {
+        hasil = terbilang(angka - 10) + " BELAS";
+    } else if (angka < 100) {
+        hasil = terbilang(Math.floor(angka / 10)) + " PULUH " + terbilang(angka % 10);
+    } else if (angka < 200) {
+        hasil = "SERATUS " + terbilang(angka - 100);
+    } else if (angka < 1000) {
+        hasil = terbilang(Math.floor(angka / 100)) + " RATUS " + terbilang(angka % 100);
+    } else if (angka < 2000) {
+        hasil = "SERIBU " + terbilang(angka - 1000);
+    } else if (angka < 1000000) {
+        hasil = terbilang(Math.floor(angka / 1000)) + " RIBU " + terbilang(angka % 1000);
+    } else if (angka < 1000000000) {
+        hasil = terbilang(Math.floor(angka / 1000000)) + " JUTA " + terbilang(angka % 1000000);
+    } else if (angka < 1000000000000) {
+        hasil = terbilang(Math.floor(angka / 1000000000)) + " MILYAR " + terbilang(angka % 1000000000);
+    } else if (angka < 1000000000000000) {
+        hasil = terbilang(Math.floor(angka / 1000000000000)) + " TRILIUN " + terbilang(angka % 1000000000000);
+    } else {
+        hasil = "ANGKA TERLALU BESAR";
+    }
+    return hasil;
+}
+
 $('#select2').select2();
 AOS.init();
 
 $('#select2').on("change", function(){
     let public_id = $('#select2').val();
-
+    $.blockUI({ message: '<h1>Data Sedang Diproses!</h1>' });
     $.ajax({
         url: "/api/getKSP",
         data: {public_id: public_id, "_token": $('#csrf_token').val()},
@@ -24,10 +54,20 @@ $('#select2').on("change", function(){
             $('#total_biaya').val(new Intl.NumberFormat('en-US').format(data.total_biaya))
             $('#laba_berjalan').val(new Intl.NumberFormat('en-US').format(data.total_laba))
 
+            $('#aset_terbilang').html(terbilang(data.total_aset) + " RUPIAH")
+            $('#pendapatan_terbilang').html(terbilang(data.total_pendapatan) + " RUPIAH")
+            $('#biaya_terbilang').html(terbilang(data.total_biaya) + " RUPIAH")
+            $('#laba_terbilang').html(terbilang(data.total_laba) + " RUPIAH")
+
             $('#chart1').css("visibility","hidden")
             $('#chart2').css("visibility","hidden")
             $('#chart3').css("visibility","hidden")
             $('#judul').css("visibility","hidden")
+
+            $('#aset_terbilang').css("visibility","")
+            $('#pendapatan_terbilang').css("visibility","")
+            $('#biaya_terbilang').css("visibility","")
+            $('#laba_terbilang').css("visibility","")
         }else{
             $('#total_aset').val(new Intl.NumberFormat('en-US').format(data.data.total_aset.amount))
             $('#total_pendapatan').val(new Intl.NumberFormat('en-US').format(data.data.total_pendapatan.amount))
@@ -38,6 +78,11 @@ $('#select2').on("change", function(){
             $('#chart2').css("visibility","")
             $('#chart3').css("visibility","")
             $('#judul').css("visibility","")
+
+            $('#aset_terbilang').css("visibility","hidden")
+            $('#pendapatan_terbilang').css("visibility","hidden")
+            $('#biaya_terbilang').css("visibility","hidden")
+            $('#laba_terbilang').css("visibility","hidden")
 
             let judul = "";
                 judul += "<h1 class='text-center fw-bold'>"+data.data.nama_ksp+"<h1>";
@@ -71,7 +116,10 @@ $('#select2').on("change", function(){
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+                            format: '<b>{point.name}</b>: {point.percentage:.1f}%',
+                            style: {
+                                fontSize: '14px',
+                            }
                         }
                     }
                 },
@@ -110,7 +158,10 @@ $('#select2').on("change", function(){
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+                            format: '<b>{point.name}</b>: {point.percentage:.1f}%',
+                            style: {
+                                fontSize: '14px',
+                            }
                         }
                     }
                 },
@@ -149,8 +200,11 @@ $('#select2').on("change", function(){
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f}%'
-                        }
+                            format: '<b>{point.name}</b>: {point.percentage:.1f}%',
+                            style: {
+                                fontSize: '14px',
+                            }
+                        },
                     }
                 },
                 series: [{
@@ -160,5 +214,7 @@ $('#select2').on("change", function(){
                 }]
             });
         }
-    })
+    }).always(function() {
+        $.unblockUI();
+    });
 })

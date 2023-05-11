@@ -22,13 +22,13 @@ class BaseAPIController extends BaseResponseController
     public function parseKredit($kol){
 
         if($kol == 1){
-            $kolektibilitas = "Lancar";
+            $kolektibilitas = "L";
         }else if($kol == 2){
-            $kolektibilitas = "Kurang Lancar";
+            $kolektibilitas = "KL";
         }else if($kol == 3){
-            $kolektibilitas = "Diragukan";
+            $kolektibilitas = "D";
         }else if($kol == 4){
-            $kolektibilitas = "Macet";
+            $kolektibilitas = "M";
         }else{
             $kolektibilitas = "-";
         }

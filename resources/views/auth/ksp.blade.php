@@ -2,19 +2,26 @@
 @section('style')
     <style>
     #select2 + .select2-container .select2-selection__rendered {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     #select2 + .select2-container .select2-results__option {
-        font-size: 20px;
+        font-size: 30px;
     }
+
+    #aset_terbilang, #pendapatan_terbilang, #biaya_terbilang, #laba_terbilang{
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+    }
+
     </style>
 @endsection
 @section('content')
     <div id="judul"></div>
     <select class="form-control" id="select2" style="width: 100%; font-size: 20px;">
         <option value="#" disabled selected>--Pilih KSP--</option>
-        <option value="all">Gabungan</option>
+        <option value="all">GABUNGAN</option>
         @foreach ($search_data as $s)
             <option value="{{$s->public_id}}">{{str_replace('KSP ','',$s->name)}}</option>
         @endforeach
@@ -27,8 +34,9 @@
                 <label class="form-label text-center fw-bold h3">TOTAL ASET</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control text-center" id="total_aset" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-center" id="total_aset" value="0" style="font-size: 30px;" disabled>
                 </div>
+                <div class="mb-0" id="aset_terbilang"></div>
             </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
@@ -36,8 +44,9 @@
                 <label class="form-label text-center fw-bold h3">TOTAL PENDAPATAN</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control text-right" id="total_pendapatan" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-right" id="total_pendapatan" value="0" style="font-size: 30px;" disabled>
                 </div>
+                <div class="mb-0" id="pendapatan_terbilang"></div>
             </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
@@ -45,8 +54,9 @@
                 <label class="form-label text-center fw-bold h3">TOTAL BIAYA</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control text-right" id="total_biaya" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-right" id="total_biaya" value="0" style="font-size: 30px;" disabled>
                 </div>
+                <div class="mb-0" id="biaya_terbilang"></div>
             </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
@@ -54,8 +64,9 @@
                 <label class="form-label text-center fw-bold h3">LABA BERJALAN</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control text-right" id="laba_berjalan" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-right" id="laba_berjalan" value="0" style="font-size: 30px;" disabled>
                 </div>
+                <div class="mb-0" id="laba_terbilang"></div>
             </div>
         </div>
     </div>
