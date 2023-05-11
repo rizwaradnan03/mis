@@ -11,7 +11,7 @@ class MisController extends BaseResponseController
 {
     public function ksp(){
         if(Auth::check()){
-            $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants order by id asc");
+            $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants where grup = 'polin' order by sort_order asc");
             $title = 'KSP';
             if(empty($search_data)){
                 return $this->sendResponse($search_data, null);

@@ -70,6 +70,33 @@
             </div>
         </div>
     </div>
+    <div class="row mt-3 mb-5">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+            <div class="card pt-2">
+                <label class="form-label text-center fw-bold h3">BIAYA CADANGAN KEMATIAN</label>
+                <div class="card-body input-group">
+                    <span class="input-group-text h3" id="basic-addon1">Rp</span>
+                    <input type="text" class="form-control text-right" id="cadangan_kematian" value="Under Construction" style="font-size: 30px;" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+            <div class="card pt-2">
+                <label class="form-label text-center fw-bold h3">TOTAL JARINGAN KANTOR</label>
+                <div class="card-body">
+                    <input type="text" class="form-control text-right" id="total_kantor" value="Under Construction" style="font-size: 30px;" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+            <div class="card pt-2">
+                <label class="form-label text-center fw-bold h3">TOTAL SDM</label>
+                <div class="card-body">
+                    <input type="text" class="form-control text-right" id="total_sdm" value="Under Construction" style="font-size: 30px;" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row mb-3">
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 pt-3">
             <figure class="highcharts-figure">

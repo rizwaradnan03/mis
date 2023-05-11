@@ -11,7 +11,7 @@ class BaseAPIController extends BaseResponseController
 {
 
     public function index(){
-        $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants order by id asc");
+        $search_data = DB::connection('sqlsrv')->select("select name, database_name,public_id from tenants where grup = 'polin' order by id asc");
 
         if(empty($search_data)){
             return $this->sendResponse($search_data, null);
@@ -76,7 +76,7 @@ class BaseAPIController extends BaseResponseController
     public function getKSP(Request $request){
         $public_id = $request->input('public_id');
         if($public_id == "all"){ //apakah inputan dari dropdown yaitu gabungan
-            $search_data = DB::connection('sqlsrv')->select("select * from tenants");
+            $search_data = DB::connection('sqlsrv')->select("select * from tenants where grup = 'polin'");
             $total_aset = 0;
             $total_laba = 0;
             $total_pendapatan = 0;

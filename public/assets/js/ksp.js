@@ -96,7 +96,7 @@ $('#select2').on("change", function(){
                     type: 'pie'
                 },
                 title: {
-                    text: "Total Pinjaman <br><br>" + "Total : Rp      " + new Intl.NumberFormat('en-US').format(data.data.sum_total_pinjaman) + "<br>" + "NPL : " + Number(data.data.npl.percentage.toFixed(2)) + "%",
+                    text: "Total Pinjaman <br><br>" + "Total Rekening: "+ +" <br><br> Tot.Saldo: Rp      " + new Intl.NumberFormat('en-US').format(data.data.sum_total_pinjaman) + "<br>" + "NPL : " + Number(data.data.npl.percentage.toFixed(2)) + "%",
                     align: 'center',
                     style: {
                         fontSize: '20px'
@@ -160,7 +160,7 @@ $('#select2').on("change", function(){
                             enabled: true,
                             format: '<b>{point.name}</b>: {point.percentage:.1f}%',
                             style: {
-                                fontSize: '14px',
+                                fontSize: '10px',
                             }
                         }
                     }
