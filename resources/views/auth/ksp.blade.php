@@ -27,7 +27,7 @@
                 <label class="form-label text-center fw-bold h3">TOTAL ASET</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control" id="total_aset" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-center" id="total_aset" value="0" style="font-size: 20px;" disabled>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 <label class="form-label text-center fw-bold h3">TOTAL PENDAPATAN</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control" id="total_pendapatan" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-right" id="total_pendapatan" value="0" style="font-size: 20px;" disabled>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <label class="form-label text-center fw-bold h3">TOTAL BIAYA</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control" id="total_biaya" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-right" id="total_biaya" value="0" style="font-size: 20px;" disabled>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <label class="form-label text-center fw-bold h3">LABA BERJALAN</label>
                 <div class="card-body input-group">
                     <span class="input-group-text h3" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control" id="laba_berjalan" value="0" style="font-size: 20px;" disabled>
+                    <input type="text" class="form-control text-right" id="laba_berjalan" value="0" style="font-size: 20px;" disabled>
                 </div>
             </div>
         </div>

@@ -51,7 +51,7 @@ $('#select2').on("change", function(){
                     type: 'pie'
                 },
                 title: {
-                    text: "Total Pinjaman <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_pinjaman) + "<br>" + "NPL : " + Number(data.data.npl.percentage.toFixed(2)),
+                    text: "Total Pinjaman <br><br>" + "Total : Rp      " + new Intl.NumberFormat('en-US').format(data.data.sum_total_pinjaman) + "<br>" + "NPL : " + Number(data.data.npl.percentage.toFixed(2)) + "%",
                     align: 'center',
                     style: {
                         fontSize: '20px'
@@ -90,7 +90,7 @@ $('#select2').on("change", function(){
                     type: 'pie'
                 },
                 title: {
-                    text: "Total Simpanan <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan),
+                    text: "Total Simpanan <br><br>" + "Total : Rp       " + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan),
                     align: 'center',
                     style: {
                         fontSize: '20px'
@@ -129,7 +129,7 @@ $('#select2').on("change", function(){
                     type: 'pie'
                 },
                 title: {
-                    text: "Total Simpanan Berjangka <br><br>" + "Total : Rp" + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan_berjangka),
+                    text: "Total Simpanan Berjangka <br><br>" + "Total : Rp        " + new Intl.NumberFormat('en-US').format(data.data.sum_total_simpanan_berjangka),
                     align: 'center',
                     style: {
                         fontSize: '20px'

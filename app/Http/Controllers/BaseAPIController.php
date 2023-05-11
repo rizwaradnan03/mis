@@ -75,7 +75,7 @@ class BaseAPIController extends BaseResponseController
 
     public function getKSP(Request $request){
         $public_id = $request->input('public_id');
-        if($public_id == "all"){
+        if($public_id == "all"){ //apakah inputan dari dropdown yaitu gabungan
             $search_data = DB::connection('sqlsrv')->select("select * from tenants");
             $total_aset = 0;
             $total_laba = 0;
@@ -129,7 +129,7 @@ class BaseAPIController extends BaseResponseController
             ];
             $response_data['all'] = "all";
             return json_encode($response_data);
-        }else{
+        }else{ //
             $search_data = DB::connection('sqlsrv')->selectOne("select * from tenants where public_id = $public_id");
             if(empty($search_data)){
             return $this->sendResponse($search_data,null);
@@ -166,47 +166,62 @@ class BaseAPIController extends BaseResponseController
                 //Chart Pinjaman
                 $sum_pinjaman = 0;
                 $getDataPinjaman = DB::connection($connection)->select($query_ksp[0]->query);
-                foreach($getDataPinjaman as $tp){
-                    $response_data['total_pinjaman'][] = [
-                        'name' => $this->parseKredit($tp->kolektibilitas),
-                        'noa' => $tp->noa,
-                        'y' => floatval($tp->amount),
-                    ];
+                if(empty($getDataPinjaman)){
+                    $response_data['total_pinjaman'] = 0;
+                    $response_data['sum_total_pinjaman'] = $sum_pinjaman;
+                }else{
+                    foreach($getDataPinjaman as $tp){
+                        $response_data['total_pinjaman'][] = [
+                            'name' => $this->parseKredit($tp->kolektibilitas),
+                            'noa' => $tp->noa,
+                            'y' => floatval($tp->amount),
+                        ];
+                    }
+                    foreach($response_data['total_pinjaman'] as $elemen){
+                        $sum_pinjaman += $elemen['y'];
+                    }
+                    $response_data['sum_total_pinjaman'] = $sum_pinjaman;
                 }
-                foreach($response_data['total_pinjaman'] as $elemen){
-                    $sum_pinjaman += $elemen['y'];
-                }
-                $response_data['sum_total_pinjaman'] = $sum_pinjaman;
 
                 // Chart Simpanan
                 $sum_simpanan = 0;
                 $getDataSimpanan = DB::connection($connection)->select($query_ksp[1]->query);
-                foreach($getDataSimpanan as $ts){
-                    $response_data['total_simpanan'][] = [
-                        'name' => $this->parseSimpanan($ts->kodeproduktab),
-                        'noa' => $ts->noa,
-                        'y' => floatval($ts->amount),
-                    ];
+                if(empty($getDataSimpanan)){
+                    $response_data['total_simpanan'] = 0;
+                    $response_data['sum_total_simpanan'] = $sum_simpanan;
+                }else{
+                    foreach($getDataSimpanan as $ts){
+                        $response_data['total_simpanan'][] = [
+                            'name' => $this->parseSimpanan($ts->kodeproduktab),
+                            'noa' => $ts->noa,
+                            'y' => floatval($ts->amount),
+                        ];
+                    }
+                    foreach($response_data['total_simpanan'] as $elemen){
+                        $sum_simpanan += $elemen['y'];
+                    }
+                    $response_data['sum_total_simpanan'] = $sum_simpanan;
                 }
-                foreach($response_data['total_simpanan'] as $elemen){
-                    $sum_simpanan += $elemen['y'];
-                }
-                $response_data['sum_total_simpanan'] = $sum_simpanan;
 
                 // Chart Simpanan Berjangka
                 $sum_simpanan_berjangka = 0;
                 $getDataDeposito = DB::connection($connection)->select($query_ksp[2]->query);
-                foreach($getDataDeposito as $sb){
-                    $response_data['total_simpanan_berjangka'][] = [
-                        'name' => $this->parseDeposito($sb->kodeproduk),
-                        'noa' => $sb->noa,
-                        'y' => floatval($sb->amount),
-                    ];
+                if(empty($getDataDeposito)){
+                    $response_data['total_simpanan_berjangka'] = 0;
+                    $response_data['sum_total_simpanan_berjangka'] = $sum_simpanan_berjangka;
+                }else{
+                    foreach($getDataDeposito as $sb){
+                        $response_data['total_simpanan_berjangka'][] = [
+                            'name' => $this->parseDeposito($sb->kodeproduk),
+                            'noa' => $sb->noa,
+                            'y' => floatval($sb->amount),
+                        ];
+                    }
+                    foreach($response_data['total_simpanan_berjangka'] as $elemen){
+                        $sum_simpanan_berjangka += $elemen['y'];
+                    }
+                    $response_data['sum_total_simpanan_berjangka'] = $sum_simpanan_berjangka;
                 }
-                foreach($response_data['total_simpanan_berjangka'] as $elemen){
-                    $sum_simpanan_berjangka += $elemen['y'];
-                }
-                $response_data['sum_total_simpanan_berjangka'] = $sum_simpanan_berjangka;
 
                 // Chart NPL
                 $getDataNPL = DB::connection($connection)->selectOne($query_ksp[3]->query);
