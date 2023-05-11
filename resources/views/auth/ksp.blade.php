@@ -14,8 +14,9 @@
     <div id="judul"></div>
     <select class="form-control" id="select2" style="width: 100%; font-size: 20px;">
         <option value="#" disabled selected>--Pilih KSP--</option>
+        <option value="all">Gabungan</option>
         @foreach ($search_data as $s)
-            <option value="{{$s->public_id}}">{{$s->name}}</option>
+            <option value="{{$s->public_id}}">{{str_replace('KSP ','',$s->name)}}</option>
         @endforeach
     </select>
     <input type="hidden" id="csrf_token" name="csrf_token" value="{{csrf_token()}}">
